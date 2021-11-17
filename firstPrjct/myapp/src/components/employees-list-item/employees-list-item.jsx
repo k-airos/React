@@ -2,12 +2,12 @@ import './employees-list-item.css';
 
 const EmployeesListItem = (props)=>{
 
-    const {name,salary, onDelete, onToggleProp, increase, rise} = props;
+    const {name,salary, onDelete, onToggleProp, increase, rise, changedSalary} = props;
 
         return (
             <li className={"list-group-item d-flex justify-content-between" + (increase ? ' increase' : '') + (rise ? ' like' : '') }>
                 <span className="list-group-item-label" data-toggle="rise" onClick={onToggleProp}>{name}</span>
-                <input type="text" className="list-group-item-input" defaultValue={salary+'$'}/>
+                <input onChange={changedSalary} type="text" className="list-group-item-input" defaultValue={salary+(salary.toString().indexOf('$')>-1?'':'$')}/>
                 <div className='d-flex justify-content-center align-items-center'>
                     <button type="button"
                         className="btn-cookie btn-sm "
